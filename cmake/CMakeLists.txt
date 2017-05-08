@@ -15,15 +15,16 @@ include_directories(helloLib)
 add_executable(helloDaDaoLib helloDaDaoLib.cpp)
 target_link_libraries(helloDaDaoLib helloLib)
 
-# # 使用FindHelloLib
-# # 添加cmake模块以使用g2o
-# list( APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake_modules )
-# # 使用find_package
-# find_package(HelloLib REQUIRED)
-# IF(HelloLIB_FOUND)
-#   message("find hello lib")
-# ENDIF(HelloLIB_FOUND)
-# include_directories(${HelloLIB_INCLUDE_DIR})
 
-# add_executable(helloDaDaoLibFindPackage helloDaDaoLib.cpp)
-# target_link_libraries(helloDaDaoLibFindPackage ${HelloLIB})
+# 使用FindHelloLib
+# 添加cmake模块
+list( APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake_modules )
+# 使用find_package
+find_package(HelloLib REQUIRED)
+IF(HelloLIB_FOUND)
+  message("find hello lib")
+ENDIF(HelloLIB_FOUND)
+include_directories(${HelloLIB_INCLUDE_DIR})
+
+add_executable(helloDaDaoLibFindPackage helloDaDaoLib.cpp)
+target_link_libraries(helloDaDaoLibFindPackage ${HelloLIB})
